@@ -1,0 +1,24 @@
+﻿/* 组图开始 小图部分 */
+.thumbpic{margin-bottom:10px; background: #fff; border:1px solid #ddd; border-top:none; padding: 10px;}
+.thumbpic .ltp{float:left;width:110px;margin:10px 15px 0 30px;text-align: center;}
+.thumbpic .ltp a, .thumbpic .rtp a{font-size: 12px;color: #333; text-decoration: none;}
+.thumbpic span{height:20px;float:left;cursor:pointer; line-height:20px;width:110px;}
+.thumbpic .rtp{float:left;width:110px;margin:10px 0 0 15px;text-align: center;}
+#piclist{width:815px;float:left;overflow:hidden;height:135px;position:relative;}
+#piclist ul{margin:0;padding:0;list-style:none;overflow:hidden;width:20000px;position:relative;}
+#piclist ul li{float:left;cursor:pointer;position:relative;height:135px;background-image: url(../images/ico_none.gif);background-repeat: no-repeat;  background-position: center 0px;}
+#piclist ul li img{height:110px;width:110px;margin:10px;padding:3px;}
+#piclist .hover{height:135px;background-image: url(../images/ico_bg.gif);background-repeat: no-repeat;background-position: center  0px;}
+#piclist ul li tt{background:#000;color:#FFF;position:absolute;z-index:20; font-family:arial;font-size:12px;line-height:16px;padding:0 5px;margin:55px 0 0 -85px; opacity:0.7;}
+
+.thumbpic a.bntprev{float:left;width:20px;height:130px;display:block;outline:none;background-image: url(../images/ico_left.gif);background-repeat: no-repeat;
+background-position: center 45px;}
+.thumbpic a.bntnext{float:left;width:20px;height:130px;display:block;outline:none;background-image: url(../images/ico_right.gif);background-repeat: no-repeat;
+background-position: center 45px;}
+
+#originalpic{position:relative;overflow:hidden;zoom:1;height:100%;clear:both;text-align:center; background: #fff; border:1px solid #ddd;}
+#originalpic img{max-width:900px;}
+#aPrev{position:absolute;z-index:10;left:0;top:0;display:block;width:50%;height:100%;background:url(../images/blank.gif);}
+#aNext{position:absolute;z-index:10;right:0;top:0;display:block;width:50%;height:100%;background:url(../images/blank.gif);}
+
+.imgitem {display:none;position:relative; }
