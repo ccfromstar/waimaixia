@@ -28,8 +28,8 @@ class AdminController extends RController {
                 array(
                     'title' => '网站设置',
                     'link' => array(
-                        array('text' => '基本信息',     'node' => 'Admin.Config.setting', 'params' => array('type' => 'base')),
-                        array('text' => '联系方式',     'node' => 'Admin.Config.setting', 'params' => array('type' => 'contact')),
+                        //array('text' => '基本信息',     'node' => 'Admin.Config.setting', 'params' => array('type' => 'base')),
+                        //array('text' => '联系方式',     'node' => 'Admin.Config.setting', 'params' => array('type' => 'contact')),
                         array('text' => '特殊地址',     'node' => 'Admin.Config.setting', 'params' => array('type' => 'expaddr')),
                         array('text' => '交易设置',     'node' => 'Admin.Config.setting', 'params' => array('type' => 'trade')),
                     ),

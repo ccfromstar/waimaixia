@@ -197,9 +197,10 @@ class SiteController extends Controller{
 		
 		$gets =  xml_to_array(Post($post_data, $target));
 		
-		if($gets['SubmitResult']['code']!=2){
-			file_put_contents('/data/www/wm/waimaixia/sms_log.txt', $mobile." ".$gets['SubmitResult']['msg']."【".date('Y-m-d H:i:s')."】 \n\r", FILE_APPEND);
-		}
+		error_log($gets['SubmitResult']['code']);
+		//if($gets['SubmitResult']['code']!=2){
+			file_put_contents('/var/www/sms_log.txt', $mobile." ".$gets['SubmitResult']['msg']."【".date('Y-m-d H:i:s')."】 \n\r", FILE_APPEND);
+		//}
 	}
 
 	public function actionCheckYzm(){
@@ -229,20 +230,20 @@ class SiteController extends Controller{
 					if($user->validate() && $user->save()){
 						$user->refresh();
 						
-						file_put_contents('/data/www/wm/waimaixia/log.txt', "新注册用户:".$mobile." ;开始赠送卡券 \n\r", FILE_APPEND);
+						file_put_contents('/var/www/log.txt', "新注册用户:".$mobile." ;开始赠送卡券 \n\r", FILE_APPEND);
 						//卡券发放
 						$tk = Yii::app()->ticket;
 						$tid = $tk->addTicketByValue(10,$user->id,1);
 						
 						if(!$tid){
-							file_put_contents('/data/www/wm/waimaixia/log.txt', "新注册用户:".$mobile." ;赠送1张10元卡券失败 \n\r", FILE_APPEND);
+							file_put_contents('/var/www/log.txt', "新注册用户:".$mobile." ;赠送1张10元卡券失败 \n\r", FILE_APPEND);
 						}else{
 							$tk->updateLog($user->id,$tid,1,0,0,1,1,'注册赠送卡券');
 				
 							$tid = $tk->addTicketByValue(5,$user->id,8);
 							
 							if(!$tid){
-								file_put_contents('/data/www/wm/waimaixia/log.txt', "新注册用户:".$mobile." ;赠送8张5元卡券失败 \n\r", FILE_APPEND);
+								file_put_contents('/var/www/log.txt', "新注册用户:".$mobile." ;赠送8张5元卡券失败 \n\r", FILE_APPEND);
 							}else{
 								$tk->updateLog($user->id,$tid,8,0,0,1,1,'注册赠送卡券');
 							}
