@@ -1,6 +1,18 @@
 <div class="title">
-
+    注册总用户数：<span id="total">0</span>
 </div>
+
+<script>
+    
+        $.ajax({
+            type: "post",
+            url: "http://www.4000191177.com:8080/service/getTotal",
+            success: function(data) {
+               $("#total").html(data[0].count);
+            }
+        });
+    
+</script>
 
 <div id="assignments">
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
