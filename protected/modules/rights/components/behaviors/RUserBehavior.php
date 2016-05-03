@@ -16,6 +16,8 @@ class RUserBehavior extends CModelBehavior
 	* @property the name of the name column.
 	*/
 	public $nameColumn;
+
+	public $regtimeColumn;
 	
 	private $_assignments;
 
@@ -52,6 +54,19 @@ class RUserBehavior extends CModelBehavior
 	public function getAssignmentNameLink()
 	{
 		return CHtml::link($this->getName(), array('assignment/user', 'id'=>$this->getId()));
+	}
+
+	public function getTime()
+	{
+		if( $this->regtimeColumn===null )
+			$this->regtimeColumn = Rights::module()->regTimeColumn;
+
+		return $this->owner->{$this->regtimeColumn};
+	}
+
+	public function getRegTime()
+	{
+		return $this->getTime();
 	}
 	
 	/**

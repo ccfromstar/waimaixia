@@ -39,6 +39,11 @@
     			'htmlOptions'=>array('class'=>'name-column','style'=>'text-align:center;width:100px;'),
     			'value'=>'$data->getTickets()',
     		),
+            array(
+                'header'=>'注册时间',
+                'htmlOptions'=>array('class'=>'name-column','style'=>'text-align:center;width:200px;'),
+                'value'=>'$data->getTime()',
+            ),
     		array(
     			'name'=>'assignments',
     			'header'=>Rights::t('core', 'Roles'),

@@ -42,6 +42,10 @@ class RightsModule extends CWebModule
 	*/
 	public $userNameColumn = 'username';
 	/**
+	* @property string the name of the regtime column in the user table.
+	*/
+	public $regTimeColumn = 'regtime';
+	/**
 	* @property boolean whether to enable business rules.
 	*/
 	public $enableBizRule = true;
