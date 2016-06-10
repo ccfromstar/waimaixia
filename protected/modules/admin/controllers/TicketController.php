@@ -67,8 +67,11 @@ class TicketController extends AdminController{
 			$model->opter = Yii::app()->user->id;
 			
 			//发卡券
-			$tk = Yii::app()->ticket;
-			$tid = $tk->addUserTicket($model->uid,$model->tid);
+			//循环发放
+			for ($x=1; $x<=intval($model->quantity); $x++) {
+  				$tk = Yii::app()->ticket;
+				$tid = $tk->addUserTicket($model->uid,$model->tid);
+			} 
 			
 			if($tid){
 				if($model->validate() && $model->save()){
