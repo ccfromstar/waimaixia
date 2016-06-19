@@ -105,7 +105,7 @@ class SiteController extends Controller{
 		if(!$menusBl){
 			$crit = new CDbCriteria;
 			$crit->order = 'price asc,updtime desc';
-			$crit->condition = "cid=2 and status=1";
+			$crit->condition = "cid=6 and status=1";
 			$menusBl = Menu::model()->findAll($crit);
 		}
 		
@@ -113,9 +113,18 @@ class SiteController extends Controller{
 		if(!$menusJk){
 			$crit = new CDbCriteria;
 			$crit->order = 'price asc,updtime desc';
-			$crit->condition = "cid=4 and status=1";
+			$crit->condition = "cid=5 and status=1";
 			$menusJk = Menu::model()->findAll($crit);
 			Yii::app()->cache->set('menusJk', $menusJk, 60*60);
+		}
+
+		$menusSMZ = Yii::app()->cache->get('menusSMZ');
+		if(!$menusSMZ){
+			$crit = new CDbCriteria;
+			$crit->order = 'price asc,updtime desc';
+			$crit->condition = "cid=7 and status=1";
+			$menusSMZ = Menu::model()->findAll($crit);
+			Yii::app()->cache->set('menusSMZ', $menusSMZ, 60*60);
 		}
 
 		$this->pageTitle = $this->pageTitle.' 首页';
@@ -123,6 +132,7 @@ class SiteController extends Controller{
 			'addr' => $addr,
 			'menusBl' => $menusBl,
 			'menusJk' => $menusJk,
+			'menusSMZ' => $menusSMZ,
 			'mid' => $mid,
 			'curAddr' => $curAddr,
 			'curSendDate' => $curSendDate,

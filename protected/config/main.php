@@ -58,10 +58,10 @@ return array(
         ),
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=wmx',
+			'connectionString' => 'mysql:host=127.0.0.1;dbname=takeaway',
 			'emulatePrepare' => true,
-			'username' => 'wmx',
-			'password' => '',
+			'username' => 'root',
+			'password' => 'password123',
 			'charset' => 'utf8',
 		),
 
@@ -151,14 +151,14 @@ return array(
 
 		'wechat1'=>array(
 			'token'=>'takeaway',
-			'appid'=>'wxe2a20ae8d978330b',
-			'appsecret'=>'5160fed55fa7f8cffe2677213b270608',
+			'appid'=>'',
+			'appsecret'=>'',
 		),
 
 		'wechat'=>array(
 			'token'=>'takeaway',
-			'appid'=>'wx666cb8cf40ea32d4',
-			'appsecret'=>'a1aefa3fa27d68754f989591bcedb2f3',
+			'appid'=>'',
+			'appsecret'=>'',
 		),
 
 		'order_status' => array(
@@ -179,12 +179,13 @@ return array(
 			'b' => '11:30-12:00',
 			'o' => '12:00-12:30',
 			'm' => '12:30-13:00',
+			'n' => '13:00-14:00',
 		),
 
 		'sms_config' => array(
 			'addr' => 'http://121.199.16.178/webservice/sms.php?method=Submit',
-			'username' => 'cf_michaelgaolove',
-			'pwd' => 'michaelgaolove',
+			'username' => '',
+			'pwd' => '',
 		),
 	),
 );

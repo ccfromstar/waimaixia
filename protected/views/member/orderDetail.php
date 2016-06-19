@@ -356,14 +356,25 @@ $(function(){
 		$("#show_address").text($(this).find('input[name="addresstext"]').val());
 		$(".msg_zz").css('display', 'none');
 	});
+
+	//自动使用优惠券
+	var sum = 0;
+	$(".order_topitem2").each(function(){
+		sum += parseInt($(this).find(".order-number").val());
+	});
+	for(var i=0;i<sum;i++){
+		$(".user_yhq").find("input[type='checkbox']").eq(i).attr("checked","checked");
+	}
+	getTickets();
 });
 
 function showTickets(){
+	/*
 	var pageii = layer.open({
 		type: 1,
 		content: $("#mytickets").html(),
 		style: 'overflow:auto; position:fixed; left:0; top:0; width:100%; height:100%; border:none;'
-	});
+	});*/
 }
 
 function getTickets(){
@@ -449,8 +460,8 @@ function checkHp(address,lng,lat,sum){
 	myGeo.getLocation(new BMap.Point(lng,lat), function(result){
 		var addr = result.address;
 
-		if(addr.indexOf("黄浦区")==-1){
-			//不在黄埔区
+		if(addr.indexOf("黄浦区")==-1 && !checkLJZ(lng,lat)){
+			//不在黄埔区和陆家嘴
 			if(sum<10){
 				layer.open({
 					content: '黄浦区外内环线内10份起送',

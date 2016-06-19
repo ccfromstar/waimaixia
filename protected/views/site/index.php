@@ -19,50 +19,16 @@
 	</div>
 </header>
 <section>
-	<ul class="i_tab1">
+	<ul class="i_tab1" style="display:none">
 		<li class="tab1_li1"><?php if($mid==4){ echo "减脂套餐";}else{ echo "白领套餐";}?></li>
 		<li class="tab1_li2"><?php if($mid==4){ echo "白领套餐";}else{ echo "减脂套餐";}?></li>
 	</ul>
 
 	<ul class="i_tab2">
-	<li>
-		<?php
-			if($mid==4){
-				$menusFirst = $menusJk;
-			}else{
-				$menusFirst = $menusBl;
-			}
-
-			foreach($menusFirst as $v):
-		?>
-		<div class="i_item">
-			<input type="hidden" name="menuid" value="<?php echo $v->id;?>" />
-			<div class="i_img">
-				<img src="<?php echo $v->showpic;?>" width="100%" alt=""/>
-			</div>
-			<div class="i_content">
-				<div class="i_ctop">
-					<span class="i_tit"><?php echo $v->name;?></span>
-					<div class="cart_plus">
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $v->price;?>)" class="cart_re">-</a>
-						<p class="cart_number">0</p>
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $v->price;?>)" class="cart_add">+</a>
-					</div>
-					<span class="i_price">￥<?php echo sprintf('%.2f',$v->price);?></span>
-				</div>
-				<div class="i_cbottom">
-					<p>原料：<?php echo $v->material;?></p>
-					<p>口感：<?php echo $v->taste;?></p>
-					<p>特色：<?php echo $v->special;?></p>
-				</div>
-			</div>
-		</div>
-		<?php endforeach;?>
-		<!--白领套餐结束-->
-	</li>
+	
 
 	<li>
-		<!--减脂套餐-->
+		<!--精选套餐-->
 		<?php
 			if($mid==4){
 				$menusSecond = $menusBl;
@@ -79,6 +45,7 @@
 			</div>
 			<div class="i_content">
 				<div class="i_ctop">
+					<span class="i_cat">精选套餐</span>
 					<span class="i_tit"><?php echo $v->name;?></span>
 					<div class="cart_plus">
 						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $v->price;?>)" class="cart_re">-</a>
@@ -95,7 +62,79 @@
 			</div>
 		</div>
 		<?php endforeach;?>
-		<!--减脂套餐结束-->
+		<!--精选套餐结束-->
+	</li>
+
+	<li>
+		<!--本周例汤-->
+		<?php
+			if($mid==4){
+				$menusFirst = $menusJk;
+			}else{
+				$menusFirst = $menusBl;
+			}
+
+			foreach($menusFirst as $v):
+		?>
+		<div class="i_item">
+			<input type="hidden" name="menuid" value="<?php echo $v->id;?>" />
+			<div class="i_img">
+				<img src="<?php echo $v->showpic;?>" width="100%" alt=""/>
+			</div>
+			<div class="i_content">
+				<div class="i_ctop">
+					<span class="i_cat">本周例汤</span>
+					<span class="i_tit"><?php echo $v->name;?></span>
+					<div class="cart_plus">
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $v->price;?>)" class="cart_re">-</a>
+						<p class="cart_number">0</p>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $v->price;?>)" class="cart_add">+</a>
+					</div>
+					<span class="i_price">￥<?php echo sprintf('%.2f',$v->price);?></span>
+				</div>
+				<div class="i_cbottom">
+					<p>原料：<?php echo $v->material;?></p>
+					<p>口感：<?php echo $v->taste;?></p>
+					<p>特色：<?php echo $v->special;?></p>
+				</div>
+			</div>
+		</div>
+		<?php endforeach;?>
+		<!--本周例汤结束-->
+	</li>
+
+	<li>
+		<!--三明治精选-->
+		<?php
+			$menusThird = $menusSMZ;
+
+			foreach($menusThird as $v):
+		?>
+		<div class="i_item">
+			<input type="hidden" name="menuid" value="<?php echo $v->id;?>" />
+			<div class="i_img">
+				<img src="<?php echo $v->showpic;?>" width="100%" alt=""/>
+			</div>
+			<div class="i_content">
+				<div class="i_ctop">
+					<span class="i_cat">三明治精选</span>
+					<span class="i_tit"><?php echo $v->name;?></span>
+					<div class="cart_plus">
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $v->price;?>)" class="cart_re">-</a>
+						<p class="cart_number">0</p>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $v->price;?>)" class="cart_add">+</a>
+					</div>
+					<span class="i_price">￥<?php echo sprintf('%.2f',$v->price);?></span>
+				</div>
+				<div class="i_cbottom">
+					<p>原料：<?php echo $v->material;?></p>
+					<p>口感：<?php echo $v->taste;?></p>
+					<p>特色：<?php echo $v->special;?></p>
+				</div>
+			</div>
+		</div>
+		<?php endforeach;?>
+		<!--三明治精选结束-->
 	</li>
 	</ul>
 
@@ -444,11 +483,11 @@ function checkHp(address,lng,lat,jsonStr,sum){
 	myGeo.getLocation(new BMap.Point(lng,lat), function(result){
 		var addr = result.address;
 
-		if(addr.indexOf("黄浦区")==-1){
-			//不在黄埔区
+		if(addr.indexOf("黄浦区")==-1 && !checkLJZ(lng,lat)){
+			//不在黄埔区和陆家嘴
 			if(sum<10){
 				layer.open({
-					content: '黄浦区外内环线内10份起送',
+					content: '黄浦区和陆家嘴外内环线内10份起送',
 					style: 'background-color:#09C1FF; color:#fff; border:none;',
 					time: 2
 				});

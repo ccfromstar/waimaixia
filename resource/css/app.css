@@ -102,8 +102,9 @@ body{max-width: 640px;margin: 0 auto}
 .cart_number{width:30px; text-align: center;float: left;color: #999}
 .i_price{color: #ff0000;float: right;margin-right: 5%;font-family: "Arial"}
 .i_tit{font-weight: 600}
-.i_ctop{margin-bottom: 20px}
-.i_cbottom p{font-size: 1.4rem;color: #666;margin-top: 0;margin-bottom: 12px}
+.i_cat{font-size: 1.2rem;color:#fff;display:inline-block;background: rgba(251, 146, 117,0.9);padding: 1px 5px;border-radius: 2px;}
+.i_ctop{margin-bottom: 5px}
+.i_cbottom p{font-size: 1.2rem;color: #666;margin-top: 0;margin-bottom: 2px}
 .i_foot{border-top: 1px solid #d9d9d9;height: 49px;position: fixed;width: 100%;bottom: 0;background: #fff;max-width: 640px}
 .i_qrbtn{width: 100%;background: #b5b5b5;color: #fff;font-size: 1.8rem;height: 49px;}
 .i_qrbtn_yk{background: #fb9275;}
@@ -228,7 +229,8 @@ body{max-width: 640px;margin: 0 auto}
 .i_tab1{position: fixed;right: 0;top:12%;width: 20%}
 .i_tab1 li{width: 100%;border-radius: 3px 0 0 3px;color: #fff;font-size: 1.2rem;text-align: center;padding: 7px 0;background: rgba(251, 146, 117,0.9)}
 .i_tab1 .tab1_li1{margin-bottom: 5px}
-.i_tab2 li{display: none;padding-bottom:3em;}
+.i_tab2 {margin-bottom: 50px;}
+.i_tab2 li{padding-bottom:0em;}
 .i_tab1 li.current1{background: rgba(147, 114, 99,0.9)}
 
 .total_price{font-size: 1.6rem;color: #ff0000;font-weight: normal;float: right;font-family: "Arial"}
