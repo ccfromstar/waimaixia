@@ -496,7 +496,7 @@ class MemberController extends Controller{
 		$today = date('Y-m-d');
 
 		if(date('w')>=1 && date('w')<=4){
-			if(date('H')<10){
+			if(date('H')<12){
 				//当天及本周的日期
 				if($req_date>=$today && $req_date<=$this->weekEndDate()){
 					return true;
@@ -508,7 +508,7 @@ class MemberController extends Controller{
 				}
 			}
 		}elseif(date('w')==5){
-			if(date('H')<10){
+			if(date('H')<12){
 				//当天
 				if($req_date==$today){
 					return true;
