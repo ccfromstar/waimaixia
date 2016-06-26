@@ -127,12 +127,22 @@ class SiteController extends Controller{
 			Yii::app()->cache->set('menusSMZ', $menusSMZ, 60*60);
 		}
 
+		$menusDXDM = Yii::app()->cache->get('menusDXDM');
+		if(!$menusDXDM){
+			$crit = new CDbCriteria;
+			$crit->order = 'price asc,updtime desc';
+			$crit->condition = "cid=8 and status=1";
+			$menusDXDM = Menu::model()->findAll($crit);
+			Yii::app()->cache->set('menusDXDM', $menusDXDM, 60*60);
+		}
+
 		$this->pageTitle = $this->pageTitle.' 首页';
 		$this->render('index',array(
 			'addr' => $addr,
 			'menusBl' => $menusBl,
 			'menusJk' => $menusJk,
 			'menusSMZ' => $menusSMZ,
+			'menusDXDM' => $menusDXDM,
 			'mid' => $mid,
 			'curAddr' => $curAddr,
 			'curSendDate' => $curSendDate,

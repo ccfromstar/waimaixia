@@ -104,6 +104,40 @@
 	</li>
 
 	<li>
+		<!--稻香大米-->
+		<?php
+			$menusFouth = $menusDXDM;
+
+			foreach($menusFouth as $v):
+		?>
+		<div class="i_item">
+			<input type="hidden" name="menuid" value="<?php echo $v->id;?>" />
+			<div class="i_img">
+				<img src="<?php echo $v->showpic;?>" width="100%" alt=""/>
+			</div>
+			<div class="i_content">
+				<div class="i_ctop">
+					<span class="i_cat">稻香大米</span>
+					<span class="i_tit"><?php echo $v->name;?></span>
+					<div class="cart_plus">
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $v->price;?>)" class="cart_re">-</a>
+						<p class="cart_number">0</p>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $v->price;?>)" class="cart_add">+</a>
+					</div>
+					<span class="i_price">￥<?php echo sprintf('%.2f',$v->price);?></span>
+				</div>
+				<div class="i_cbottom">
+					<p>原料：<?php echo $v->material;?></p>
+					<p>口感：<?php echo $v->taste;?></p>
+					<p>特色：<?php echo $v->special;?></p>
+				</div>
+			</div>
+		</div>
+		<?php endforeach;?>
+		<!--稻香大米结束-->
+	</li>
+
+	<li>
 		<!--三明治精选-->
 		<?php
 			$menusThird = $menusSMZ;
