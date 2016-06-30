@@ -76,7 +76,7 @@
          <div class="order_k"></div>
           <div class="order_kk">
          <div class="order_txt1">送餐时间</div>
-			<select name="sendTime" data-am-selected>
+			<select name="sendTime" id="order_sendTime" data-am-selected>
 			<?php
 				foreach(Yii::app()->params['timeline'] as $k=>$vt):
 			?>
@@ -244,6 +244,34 @@ $(function(){
 		var stockFlag = true;
 		var nostockMenu = '';
 		var sendDate = $("#sendDate").val();
+		//检查支付时间是否超过设定
+		var sendTime = $("#order_sendTime").val();
+
+		var d = new Date();
+		var today = d.Format("yyyy-MM-dd");
+		var h = d.getHours();
+
+			if(sendDate==today){
+				if(h == 10){
+					if(sendTime !='o' && sendTime !='m'){
+						layer.open({
+							content: '当前可选配送时间段为12:00—12:30；12:30—13:00',
+							style: 'background-color:#09C1FF; color:#fff; border:none;',
+							time: 2
+						});
+						return false;
+					}
+				}else if(h == 11){
+					if(sendTime !='n'){
+						layer.open({
+							content: '当前可选配送时间段为13:00—14:00',
+							style: 'background-color:#09C1FF; color:#fff; border:none;',
+							time: 2
+						});
+						return false;
+					}
+				}
+			}
 		//下单前再次检查库存
 		$(".order-number").each(function(){
 			var mid = $(this).data('mid');
@@ -357,16 +385,47 @@ $(function(){
 		$(".msg_zz").css('display', 'none');
 	});
 
-	//自动使用优惠券
+
+	//自动使用优惠券,如果是饭和菜不能使用优惠券
+
 	var sum = 0;
 	$(".order_topitem2").each(function(){
 		sum += parseInt($(this).find(".order-number").val());
 	});
+
+	<?php foreach($orderMenu as $v):?>
+		if(<?php echo $v['menu']['cid']?> == 6 || <?php echo $v['menu']['cid']?> == 8){
+			sum = sum - <?php echo $v['quantity'];?>;
+		}
+	<?php endforeach;?>
+
 	for(var i=0;i<sum;i++){
 		$(".user_yhq").find("input[type='checkbox']").eq(i).attr("checked","checked");
 	}
 	getTickets();
 });
+
+Date.prototype.Format = function(fmt) {
+	var d = this;
+	var o = {
+		"M+": d.getMonth() + 1, //月份
+		"d+": d.getDate(), //日
+		"h+": d.getHours(), //小时
+		"m+": d.getMinutes(), //分
+		"s+": d.getSeconds(), //秒
+		"q+": Math.floor((d.getMonth() + 3) / 3), //季度
+		"S": d.getMilliseconds() //毫秒
+	};
+	if (/(y+)/.test(fmt)) {
+		fmt = fmt.replace(RegExp.$1, (d.getFullYear() + "").substr(4 - RegExp.$1.length));
+	}
+	for (var k in o) {
+		if (new RegExp("(" + k + ")").test(fmt)) {
+			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+		}
+	}
+	return fmt;
+}
 
 function showTickets(){
 	/*
