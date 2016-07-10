@@ -1,9 +1,9 @@
 $(function(){
 	//session中有选中地址，则直接可点餐
-	if($("#curAddr").size()>0){
+	//if($("#curAddr").size()>0){
 		$(".cart_add").addClass('can_cart_add').removeClass('cart_add');
 		$(".i_qrbtn").addClass('can_i_qrbtn').removeClass('i_qrbtn');
-	}
+	//}
 
 	//日期选择控件
 	$('.form_datetime-4').datetimepicker({
@@ -196,7 +196,47 @@ $(function(){
 								type : 'post',
 							});
 
-							location.reload();
+							//location.reload();
+							//begin
+	//保存菜品选择结果的JSON格式
+	var jsonStr = '{';
+	//总共选择的菜品数量
+	var sum = 0;
+
+	$(".i_item").each(function(){
+		var tmpMenuId = $(this).find("input[name='menuid']").val();
+		var tmpNum = parseInt($(this).find('.cart_number').text());
+
+		if(tmpNum>0){
+			sum += tmpNum;
+			jsonStr += '"' + tmpMenuId + '":'+tmpNum+',';
+		}
+	});
+
+	if(jsonStr.indexOf(",")>-1){
+		jsonStr = jsonStr.substring(0,jsonStr.length-1);
+	}
+
+	jsonStr += '}';
+
+	if(sum>0){
+		//下单之前，先检查地址范围，黄浦区外至内环线10份起送
+		$.ajax({
+			url : '/site/getLngLat.html',
+			dataType : 'json',
+			async : false,
+			success : function(res){
+				checkHp(res.address,res.lng,res.lat,jsonStr,sum);
+			}
+		});
+	}else{
+		layer.open({
+			content: '请先选餐',
+			style: 'background-color:#09C1FF; color:#fff; border:none;',
+			time: 2
+		});
+	}
+							//end
 						}else{
 							layer.open({
 								content: res.msg,

@@ -1,6 +1,6 @@
 <!--在这里编写你的代码-->
 <header>
-	<div class="i_location">
+	<div class="i_location" style="display:none">
 		<span class="am-icon-map-marker i_licon"></span>
 		<span class="i_ltxt">
 		<?php
@@ -446,6 +446,27 @@ function minute(obj,price){
 }
 
 function choosed(obj){
+		$.ajax({
+			url : '/site/ajaxIsLogin.html',
+			success : function(res){
+				if(res=='false'){
+					location.href = "/site/login.html";
+				}else{
+					$(".zc_box").fadeIn(200);
+					//没有地址的时候，直接显示添加地址
+					if($(".i_jticon").hasClass('no-addr')){
+						$(".yk_box_center").css('display', 'none');
+						$(".new_add_center").fadeIn(200);
+					}else{
+						$(".yk_box_center").css('display', 'block');
+						$(".new_add_center").fadeOut(200);
+					}	
+				}
+			}
+		});
+
+	return false;
+
 	if($(obj).hasClass('i_qrbtn'))
 		return false;
 
