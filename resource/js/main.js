@@ -444,7 +444,47 @@ $(function(){
 									});
 
 									if(res.success){
-										location.reload();
+										//location.reload();
+										//begin
+	//保存菜品选择结果的JSON格式
+	var jsonStr = '{';
+	//总共选择的菜品数量
+	var sum = 0;
+
+	$(".i_item").each(function(){
+		var tmpMenuId = $(this).find("input[name='menuid']").val();
+		var tmpNum = parseInt($(this).find('.cart_number').text());
+
+		if(tmpNum>0){
+			sum += tmpNum;
+			jsonStr += '"' + tmpMenuId + '":'+tmpNum+',';
+		}
+	});
+
+	if(jsonStr.indexOf(",")>-1){
+		jsonStr = jsonStr.substring(0,jsonStr.length-1);
+	}
+
+	jsonStr += '}';
+
+	if(sum>0){
+		//下单之前，先检查地址范围，黄浦区外至内环线10份起送
+		$.ajax({
+			url : '/site/getLngLat.html',
+			dataType : 'json',
+			async : false,
+			success : function(res){
+				checkHp(res.address,res.lng,res.lat,jsonStr,sum);
+			}
+		});
+	}else{
+		layer.open({
+			content: '请先选餐',
+			style: 'background-color:#09C1FF; color:#fff; border:none;',
+			time: 2
+		});
+	}
+							//end
 									}
 								}
 							});
