@@ -237,7 +237,12 @@ $(function(){
 	}
 
 	$(".order_foota").click(function(){
-		location.href = "/site/index.html";
+		var url = window.location.href;
+		if(url.indexOf("path=HuaiHaiApp") != -1){
+			location.href = "/site/index.html?path=HuaiHaiApp";
+		}else{
+			location.href = "/site/index.html";
+		}
 	});
 
 	$(".order_footb").click(function(){

@@ -47,7 +47,7 @@ $(function(){
 		$(".i_tab2 li:animated").stop(false,true);
 		$(".i_tab2 li:eq("+$cde+")").fadeIn(300).siblings(".i_tab2 li").hide();
 	});
-
+	/*
 	//如果是从APP链接过来的价格都减1元
 	var url = window.location.href;
 	if(url.indexOf("?path=HuaiHaiApp")){
@@ -59,7 +59,7 @@ $(function(){
 			n = "￥" + n + ".00";
 			$(this).html(n);
 		});
-	}
+	}*/
 });
 
 //index_yk 游客--遮罩层

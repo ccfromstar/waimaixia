@@ -30,6 +30,9 @@ class MemberController extends Controller{
 
 		$selectedMenu = isset($_GET['menu'])?json_decode($_GET['menu'],true):null;
 
+		//淮海app访问标志
+		$label1 = $_GET['path'];
+
 		if(!$selectedMenu && !isset(Yii::app()->session['orderMenu']))
 			$this->redirect(Yii::app()->createUrl('/site/index'));
 
@@ -56,8 +59,14 @@ class MemberController extends Controller{
 				$tmpMenu = Menu::model()->findByPk(intval($k));
 				$tmpArr['menu'] = $tmpMenu;
 				$tmpArr['quantity'] = $v;
-				$tmpArr['amount'] = round($tmpMenu->price*$v,2);
-				$tmpArr['perPrice'] = round($tmpMenu->price,2);
+				
+				if($label1 == 'HuaiHaiApp'){
+					$tmpArr['perPrice'] = round(($tmpMenu->price)-1,2);
+					$tmpArr['amount'] = round(($tmpMenu->price-1)*$v,2);
+				}else{
+					$tmpArr['perPrice'] = round($tmpMenu->price,2);
+					$tmpArr['amount'] = round($tmpMenu->price*$v,2);
+				}
 				$sumAmount += $tmpArr['amount'];
 				array_push($orderMenu, $tmpArr);
 			}
