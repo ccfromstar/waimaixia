@@ -462,11 +462,16 @@ function minute(obj,price){
 }
 
 function choosed(obj){
+		var url = window.location.href;
 		$.ajax({
 			url : '/site/ajaxIsLogin.html',
 			success : function(res){
 				if(res=='false'){
-					location.href = "/site/login.html";
+					if(url.indexOf("?path=HuaiHaiApp") != -1){
+						location.href = "/site/login.html?path=HuaiHaiApp";
+					}else{
+						location.href = "/site/login.html";
+					}	
 				}else{
 					$(".zc_box").fadeIn(200);
 					//没有地址的时候，直接显示添加地址
