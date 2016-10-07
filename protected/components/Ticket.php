@@ -49,7 +49,7 @@ class Ticket extends CApplicationComponent
 		$model->uid = $uid;
 		$model->tid = $tid;
 		//$model->deadline = date('Y-m-d H:i:s',time() + $ticket->effect_days*24*60*60+28800); 
-		$timeStr = '2016-07-31 23:59:59';
+		$timeStr = '2016-08-31 23:59:59';
 		$model->deadline = date('Y-m-d H:i:s',strtotime($timeStr)); 
 		$model->status = 0;
 		$model->updtime = date('Y-m-d H:i:s');

@@ -37,6 +37,10 @@
 			}
 
 			foreach($menusSecond as $v):
+				$price = $v->price;
+				if($_SERVER["QUERY_STRING"]=="path=HuaiHaiApp"){
+					$price = $price - 1;
+				}
 		?>
 		<div class="i_item">
 			<input type="hidden" name="menuid" value="<?php echo $v->id;?>" />
@@ -48,11 +52,11 @@
 					<span class="i_cat">精选套餐</span>
 					<span class="i_tit"><?php echo $v->name;?></span>
 					<div class="cart_plus">
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $v->price;?>)" class="cart_re">-</a>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $price;?>)" class="cart_re">-</a>
 						<p class="cart_number">0</p>
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $v->price;?>)" class="cart_add">+</a>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $price;?>)" class="cart_add">+</a>
 					</div>
-					<span class="i_price">￥<?php echo sprintf('%.2f',$v->price);?></span>
+					<span class="i_price">￥<?php echo sprintf('%.2f',$price);?></span>
 				</div>
 				<div class="i_cbottom">
 					<p>原料：<?php echo $v->material;?></p>
@@ -75,6 +79,10 @@
 			}
 
 			foreach($menusFirst as $v):
+				$price = $v->price;
+				if($_SERVER["QUERY_STRING"]=="path=HuaiHaiApp"){
+					$price = $price - 1;
+				}
 		?>
 		<div class="i_item">
 			<input type="hidden" name="menuid" value="<?php echo $v->id;?>" />
@@ -86,11 +94,11 @@
 					<span class="i_cat">本周例汤</span>
 					<span class="i_tit"><?php echo $v->name;?></span>
 					<div class="cart_plus">
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $v->price;?>)" class="cart_re">-</a>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $price;?>)" class="cart_re">-</a>
 						<p class="cart_number">0</p>
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $v->price;?>)" class="cart_add">+</a>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $price;?>)" class="cart_add">+</a>
 					</div>
-					<span class="i_price">￥<?php echo sprintf('%.2f',$v->price);?></span>
+					<span class="i_price">￥<?php echo sprintf('%.2f',$price);?></span>
 				</div>
 				<div class="i_cbottom">
 					<p>原料：<?php echo $v->material;?></p>
@@ -109,6 +117,10 @@
 			$menusFouth = $menusDXDM;
 
 			foreach($menusFouth as $v):
+				$price = $v->price;
+				if($_SERVER["QUERY_STRING"]=="path=HuaiHaiApp"){
+					$price = $price - 1;
+				}
 		?>
 		<div class="i_item">
 			<input type="hidden" name="menuid" value="<?php echo $v->id;?>" />
@@ -120,11 +132,11 @@
 					<span class="i_cat">稻香大米</span>
 					<span class="i_tit"><?php echo $v->name;?></span>
 					<div class="cart_plus">
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $v->price;?>)" class="cart_re">-</a>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $price;?>)" class="cart_re">-</a>
 						<p class="cart_number">0</p>
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $v->price;?>)" class="cart_add">+</a>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $price;?>)" class="cart_add">+</a>
 					</div>
-					<span class="i_price">￥<?php echo sprintf('%.2f',$v->price);?></span>
+					<span class="i_price">￥<?php echo sprintf('%.2f',$price);?></span>
 				</div>
 				<div class="i_cbottom">
 					<p>原料：<?php echo $v->material;?></p>
@@ -143,6 +155,10 @@
 			$menusThird = $menusSMZ;
 
 			foreach($menusThird as $v):
+				$price = $v->price;
+				if($_SERVER["QUERY_STRING"]=="path=HuaiHaiApp"){
+					$price = $price - 1;
+				}
 		?>
 		<div class="i_item">
 			<input type="hidden" name="menuid" value="<?php echo $v->id;?>" />
@@ -154,11 +170,11 @@
 					<span class="i_cat">三明治精选</span>
 					<span class="i_tit"><?php echo $v->name;?></span>
 					<div class="cart_plus">
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $v->price;?>)" class="cart_re">-</a>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="minute(this,<?php echo $price;?>)" class="cart_re">-</a>
 						<p class="cart_number">0</p>
-						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $v->price;?>)" class="cart_add">+</a>
+						<a data-mid="<?php echo $v->id;?>" href="javascript:void(0)" onClick="plus(this,<?php echo $price;?>)" class="cart_add">+</a>
 					</div>
-					<span class="i_price">￥<?php echo sprintf('%.2f',$v->price);?></span>
+					<span class="i_price">￥<?php echo sprintf('%.2f',$price);?></span>
 				</div>
 				<div class="i_cbottom">
 					<p>原料：<?php echo $v->material;?></p>
@@ -446,11 +462,16 @@ function minute(obj,price){
 }
 
 function choosed(obj){
+		var url = window.location.href;
 		$.ajax({
 			url : '/site/ajaxIsLogin.html',
 			success : function(res){
 				if(res=='false'){
-					location.href = "/site/login.html";
+					if(url.indexOf("?path=HuaiHaiApp") != -1){
+						location.href = "/site/login.html?path=HuaiHaiApp";
+					}else{
+						location.href = "/site/login.html";
+					}	
 				}else{
 					$(".zc_box").fadeIn(200);
 					//没有地址的时候，直接显示添加地址
@@ -528,8 +549,13 @@ function formatCurrency(num) {
 
 //检测是否在黄浦区
 function checkHp(address,lng,lat,jsonStr,sum){
+	var url = window.location.href;
+	var redirectUrl = '/member/orderDetail.html?menu='+jsonStr+'&path=';
+	if(url.indexOf("?path=HuaiHaiApp") != -1){
+		redirectUrl += 'HuaiHaiApp';
+	}
 	if(checkSpec(address)){
-		location.href = '/member/orderDetail.html?menu='+jsonStr;
+		location.href = redirectUrl;
 	}
 
 	// 创建地理编码实例
@@ -548,10 +574,10 @@ function checkHp(address,lng,lat,jsonStr,sum){
 				});
 				return false;
 			}else{
-				location.href = '/member/orderDetail.html?menu='+jsonStr;
+				location.href = redirectUrl;
 			}
 		}else{
-			location.href = '/member/orderDetail.html?menu='+jsonStr;
+			location.href = redirectUrl;
 		}
 	});
 }

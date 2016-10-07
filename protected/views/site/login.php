@@ -106,7 +106,12 @@ $(function(){
 						if(refer!==''){
 							location.href = refer;
 						}else{
-							location.href = "/member/index.html";
+							var url = window.location.href;
+							if(url.indexOf("?path=HuaiHaiApp") != -1){
+								location.href = "/site/index.html?path=HuaiHaiApp";
+							}else{
+								location.href = "/member/index.html";
+							}
 						}
 					}
 				}

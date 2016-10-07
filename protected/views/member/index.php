@@ -6,6 +6,9 @@
     <div class="user_edit">[个人信息]</div>
   </div>
   <div class="user_list">
+    <a href="/site/index.html"><img src="/resource/i/images/usericon4.png" class="right"><img src="/resource/i/images/usericon1.png">开始订餐</a>
+  </div>
+  <div class="user_list">
     <a href="/member/orders.html"><img src="/resource/i/images/usericon4.png" class="right"><img src="/resource/i/images/usericon1.png">我的订单</a>
   </div>
   <div class="user_list">
