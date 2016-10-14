@@ -13,30 +13,30 @@ $(function(){
 		language:  'zh-CN'
     });
 
-	//$('.form_datetime-4').datetimepicker('setStartDate',new Date());
-	//$('.form_datetime-4').datetimepicker('setDaysOfWeekDisabled', [0,6]);
+	$('.form_datetime-4').datetimepicker('setStartDate',new Date());
+	$('.form_datetime-4').datetimepicker('setDaysOfWeekDisabled', [0,6]);
 
 	//周五上午12点为送餐时间临界点
 	if(nowDayOfWeek>=5 || nowDayOfWeek==0){
 		if(nowDayOfWeek==5){
 			if(nowHour>=12){
-				//$('.form_datetime-4').datetimepicker('setStartDate',getNextWeekStartDate());
-				//$('.form_datetime-4').datetimepicker('setEndDate',getNextWeekEndDate());
+				$('.form_datetime-4').datetimepicker('setStartDate',getNextWeekStartDate());
+				$('.form_datetime-4').datetimepicker('setEndDate',getNextWeekEndDate());
 			}else{
-				//$('.form_datetime-4').datetimepicker('setEndDate',getWeekEndDate());
+				$('.form_datetime-4').datetimepicker('setEndDate',getWeekEndDate());
 			}
 		}else if(nowDayOfWeek==6){
-			//$('.form_datetime-4').datetimepicker('setEndDate',getNextWeekEndDate());
+			$('.form_datetime-4').datetimepicker('setEndDate',getNextWeekEndDate());
 		}else{
-			//$('.form_datetime-4').datetimepicker('setEndDate',getWeekEndDate());
+			$('.form_datetime-4').datetimepicker('setEndDate',getWeekEndDate());
 		}
 	}else{
 		//当前上午12点之后只能选择第二天
 		if(nowHour>=12){
-			//$('.form_datetime-4').datetimepicker('setStartDate',new Date(nowYear, nowMonth, nowDay+1));
+			$('.form_datetime-4').datetimepicker('setStartDate',new Date(nowYear, nowMonth, nowDay+1));
 		}
 
-		//$('.form_datetime-4').datetimepicker('setEndDate',getWeekEndDate());
+		$('.form_datetime-4').datetimepicker('setEndDate',getWeekEndDate());
 	}
 
 	//首页切换
